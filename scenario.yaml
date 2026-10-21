@@ -13,7 +13,7 @@ spec:
     authoritative: ssh://git@code.alibaba-inc.com/pub-sa/Qoder-DataAgent-demo.git
     mirror_ssh: git@github.com:nickzhut/Qoder-dataagent-demo.git
     mirror_https: https://github.com/nickzhut/Qoder-dataagent-demo.git
-    default_branch: master
+    default_branch: main
     branch_pattern: issue/<issue>-<slug>
 
   dataworks:

@@ -3,7 +3,7 @@
 # 原则：QCA 只碰 GitHub；GitLab 是事实源；同步只做显式命令，不做自动双向。
 #
 # 用法：
-#   mirror/sync.sh push-master                          # 骨架/文档推到镜像
+#   mirror/sync.sh push-main                            # 骨架/文档推到镜像
 #   mirror/sync.sh pull-branch <branch>                 # 拉回 QCA 产出的分支
 #   mirror/sync.sh push-branch <branch>                 # 校验后同步回 GitLab
 #
@@ -19,8 +19,8 @@ git remote add "$GITHUB" "git@github.com:${GITHUB_REPO:?需要设置 GITHUB_REPO
 
 cmd="${1:-help}"
 case "$cmd" in
-  push-master)
-    git push "$GITHUB" master
+  push-main)
+    git push "$GITHUB" main
     ;;
   pull-branch)
     branch="${2:?用法: pull-branch <branch>}"

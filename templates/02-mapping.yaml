@@ -1,0 +1,6 @@
+source: <source_table>
+target: <target_table>
+grain_map: []
+columns: {}
+filters:
+  - "dt = '${bizdate}'"

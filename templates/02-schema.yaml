@@ -1,0 +1,18 @@
+apiVersion: dw.semantic/v1
+kind: Table
+metadata:
+  name: <table_name>
+  layer: <DIM|DWD|DWS|ADS>
+  domain: TRD
+  owner: data-arch
+  status: draft
+  version: 1.0.0
+spec:
+  grain: []
+  primary_key: []
+  partition: {field: dt, format: yyyy-MM-dd}
+  lifecycle: 1095
+  columns: []
+  upstream: []
+  downstream: []
+  freshness: T+1 06:00

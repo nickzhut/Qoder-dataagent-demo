@@ -1,0 +1,19 @@
+apiVersion: dw.semantic/v1
+kind: Entity
+metadata:
+  name: sku
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 商品
+  domain: TRD
+  key: sku_id
+  source: dim_sku
+  attributes:
+    - {name: sku_id, type: STRING, comment: 商品编码}
+    - {name: sku_name, type: STRING, comment: 商品名称}
+    - {name: category_id, type: STRING, comment: 品类编码}
+    - {name: category_name, type: STRING, comment: 品类名称}
+    - {name: list_price, type: DECIMAL(18,6), comment: 标价}
+    - {name: cost_price, type: DECIMAL(18,6), comment: 成本价}

@@ -1,0 +1,18 @@
+apiVersion: dw.semantic/v1
+kind: Entity
+metadata:
+  name: shop
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 门店
+  domain: TRD
+  key: shop_id
+  source: dim_shop
+  attributes:
+    - {name: shop_id, type: STRING, comment: 门店编码}
+    - {name: shop_name, type: STRING, comment: 门店名称}
+    - {name: city_id, type: STRING, comment: 城市编码}
+    - {name: region_id, type: STRING, comment: 区域编码}
+    - {name: open_date, type: STRING, comment: 开店日期}

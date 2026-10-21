@@ -1,0 +1,43 @@
+apiVersion: dw.semantic/v1
+kind: Metric
+metadata:
+  name: sales_amt
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 销售额
+  domain: TRD
+  grain: [shop_id, business_date]
+  definition: SUM(item_net_amt)
+  source:
+    table: dwd_trd_order_item_di
+    filter: "dt = '${bizdate}' AND is_valid = 1"
+  dimensions: [shop_id, city_id, region_id, category_id, sku_id]
+  data_type: DECIMAL(18,6)
+  synonyms: [销售额, 销售金额, 营收]
+  acceptance:
+    - 仅统计 is_valid = 1 的订单行
+    - 与 DWD 同日汇总差异为 0
+---
+apiVersion: dw.semantic/v1
+kind: Metric
+metadata:
+  name: sales_qty
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 销量
+  domain: TRD
+  grain: [shop_id, business_date]
+  definition: SUM(sales_qty)
+  source:
+    table: dwd_trd_order_item_di
+    filter: "dt = '${bizdate}' AND is_valid = 1"
+  dimensions: [shop_id, city_id, region_id, category_id, sku_id]
+  data_type: BIGINT
+  synonyms: [销量, 销售件数]
+  acceptance:
+    - 仅统计 is_valid = 1 的订单行
+    - 销量非负

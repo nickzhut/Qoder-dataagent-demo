@@ -1,0 +1,12 @@
+apiVersion: dw.semantic/v1
+kind: DomainRegistry
+domains:
+  - code: TRD
+    name: 交易域
+    owner: data-arch
+    description: 门店零售交易，含订单、订单行与促销分摊
+    metrics:
+      - sales_amt
+      - sales_qty
+      - gross_profit_amt
+      - customer_num

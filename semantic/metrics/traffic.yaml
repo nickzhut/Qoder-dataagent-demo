@@ -1,0 +1,21 @@
+apiVersion: dw.semantic/v1
+kind: Metric
+metadata:
+  name: customer_num
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 来客数
+  domain: TRD
+  grain: [shop_id, business_date]
+  definition: COUNT(DISTINCT COALESCE(member_id, order_id))
+  source:
+    table: dwd_trd_order_item_di
+    filter: "dt = '${bizdate}' AND is_valid = 1"
+  dimensions: [shop_id, city_id, region_id]
+  data_type: BIGINT
+  synonyms: [来客数, 客流, 去重客户数]
+  acceptance:
+    - 会员按 member_id 去重，非会员按 order_id 去重
+    - 该指标跨门店、跨日不可直接相加，需要回到 DWD 按客户去重

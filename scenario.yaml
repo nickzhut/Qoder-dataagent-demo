@@ -1,0 +1,50 @@
+apiVersion: dw.demo/v1
+kind: Scenario
+metadata:
+  name: retail-store-sales
+  slug: retail_sales
+  env: demo
+  owner: sa-demo
+spec:
+  region: cn-hangzhou
+
+  git:
+    # 权威库：内网 GitLab；执行镜像：QCA 只碰 GitHub
+    authoritative: ssh://git@code.alibaba-inc.com/pub-sa/Qoder-DataAgent-demo.git
+    mirror_ssh: git@github.com:nickzhut/Qoder-dataagent-demo.git
+    mirror_https: https://github.com/nickzhut/Qoder-dataagent-demo.git
+    default_branch: master
+    branch_pattern: issue/<issue>-<slug>
+
+  dataworks:
+    workspace_logical: dw_agentic_demo
+    workspace_ref: null      # preflight 后绑定实际空间；null = 待 adopt/create
+    mode: standard
+
+  maxcompute:
+    project_logical: dw_agentic_demo
+    project_ref: null
+    schemas: [ods, dim, dwd, dws, ads, tmp]
+
+  oss:
+    bucket_logical: dw-agentic-demo-evidence
+    bucket_ref: null
+
+  ram:
+    dev_role: dw-agent-dev
+    release_role: dw-agent-release
+
+  data:
+    seed: 20261020
+    stores: 10
+    skus: 50
+    days: 30
+
+  naming:
+    table_prefix: trd
+    workflow: wf_trd_shop_sales_daily
+
+  execution:
+    runner: qca-cloud        # qca-cloud | self-hosted | local
+    repo_mount: github-mirror
+    data_plane: public-endpoint

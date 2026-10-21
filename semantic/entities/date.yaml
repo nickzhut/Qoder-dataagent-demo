@@ -1,0 +1,19 @@
+apiVersion: dw.semantic/v1
+kind: Entity
+metadata:
+  name: date
+  version: 1.0.0
+  owner: data-arch
+  status: draft
+spec:
+  display_name: 日期
+  domain: TRD
+  key: business_date
+  source: dim_date
+  attributes:
+    - {name: business_date, type: STRING, comment: 营业日期，yyyy-MM-dd}
+    - {name: week, type: STRING, comment: 自然周}
+    - {name: month, type: STRING, comment: 自然月}
+    - {name: quarter, type: STRING, comment: 季度}
+    - {name: year, type: STRING, comment: 年份}
+    - {name: is_holiday, type: BIGINT, comment: 是否节假日，1 是 0 否}
